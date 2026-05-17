@@ -5,21 +5,21 @@
 class McapEncrypt < Formula
   desc "Chunk-level encryption for MCAP robotics data files"
   homepage "https://github.com/remete618/mcap-encrypt"
-  version "0.4.0"
+  version "0.9.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/remete618/mcap-encrypt/releases/download/v0.4.0/mcap-encrypt_0.4.0_darwin_amd64.tar.gz"
-      sha256 "bee1e550ab8da9e6005bf5c0e88f0777233e62619c25e6dbed85ce425a681fe0"
+      url "https://github.com/remete618/mcap-encrypt/releases/download/v0.9.0/mcap-encrypt_0.9.0_darwin_amd64.tar.gz"
+      sha256 "31565a3f7a442e9172002951ebad7a6c0251e2d397f76ce765d3b701673a1182"
 
       define_method(:install) do
         bin.install "mcap-encrypt"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/remete618/mcap-encrypt/releases/download/v0.4.0/mcap-encrypt_0.4.0_darwin_arm64.tar.gz"
-      sha256 "7f833ec02dc302d2e60a3854c4845db85698e88b449439ab7dfdc0793c3f0600"
+      url "https://github.com/remete618/mcap-encrypt/releases/download/v0.9.0/mcap-encrypt_0.9.0_darwin_arm64.tar.gz"
+      sha256 "a13b4b20f58ac80806871338a30ae4675817276e0c64cfce226548523c3302cd"
 
       define_method(:install) do
         bin.install "mcap-encrypt"
@@ -29,15 +29,15 @@ class McapEncrypt < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/remete618/mcap-encrypt/releases/download/v0.4.0/mcap-encrypt_0.4.0_linux_amd64.tar.gz"
-      sha256 "12bf772cfa838dd35f34a5cf85f23169f7346f61224e12a766fec123da5e3673"
+      url "https://github.com/remete618/mcap-encrypt/releases/download/v0.9.0/mcap-encrypt_0.9.0_linux_amd64.tar.gz"
+      sha256 "6ca8a2ccac0b020d369f3d0dfd1922845705e55ce6709722ba824734d6af09b3"
       define_method(:install) do
         bin.install "mcap-encrypt"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/remete618/mcap-encrypt/releases/download/v0.4.0/mcap-encrypt_0.4.0_linux_arm64.tar.gz"
-      sha256 "43413cbc01e2b4dd120f1246bcbb32aa63912633162c1686e29d71d2c7b9834f"
+      url "https://github.com/remete618/mcap-encrypt/releases/download/v0.9.0/mcap-encrypt_0.9.0_linux_arm64.tar.gz"
+      sha256 "75d9709a6288ce6990da4c27fec9beaa68d6173eecbd5a1a8c8db0ad2c428fed"
       define_method(:install) do
         bin.install "mcap-encrypt"
       end
