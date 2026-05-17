@@ -1,0 +1,44 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  formula:
+    name: brew ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: brew style
+        run: brew style ./Formula/mcap-encrypt.rb
+
+      - name: Tap from checkout
+        run: brew tap remete618/mcap-encrypt "$GITHUB_WORKSPACE"
+
+      - name: brew audit (strict, online)
+        run: brew audit --strict --online remete618/mcap-encrypt/mcap-encrypt
+
+      - name: brew install
+        run: brew install --verbose remete618/mcap-encrypt/mcap-encrypt
+
+      - name: brew test
+        run: brew test --verbose remete618/mcap-encrypt/mcap-encrypt
+
+      - name: brew uninstall
+        run: brew uninstall mcap-encrypt
