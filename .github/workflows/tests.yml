@@ -31,9 +31,6 @@ jobs:
       - name: brew style
         run: brew style ./Formula/mcap-encrypt.rb
 
-      - name: Tap from checkout
-        run: brew tap remete618/mcap-encrypt "$GITHUB_WORKSPACE"
-
       - name: brew audit (strict, online)
         run: brew audit --strict --online remete618/mcap-encrypt/mcap-encrypt
 
